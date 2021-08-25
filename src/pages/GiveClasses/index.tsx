@@ -1,14 +1,11 @@
-import backIcon from '../../assets/back.svg';
-import logoIcon from '../../assets/logo-small.svg';
+import { Header } from '../../components/Header';
+import { ThumbTexts } from '../../components/ThumbTexts';
+
 import plusIcon from '../../assets/plus-symbol.svg';
 import warningIcon from '../../assets/warning.svg';
 
 import {
   Container,
-  Header,
-  HeaderContent,
-  ArrowBack,
-  Logo,
   Wrapper,
   Form,
   Fieldset,
@@ -23,21 +20,12 @@ import {
 export function GiveClasses() {
   return (
     <Container>
-      <Header>
-        <HeaderContent>
-          <div>
-            <ArrowBack to="/">
-              <img src={backIcon} alt="Voltar" />
-            </ArrowBack>
-            <Logo src={logoIcon} />
-          </div>
+      <Header />
 
-          <div>
-            <h2>Que incrível que você quer dar aulas.</h2>
-            <p>O primeiro passo, é preencher esse formulário de inscrição.</p>
-          </div>
-        </HeaderContent>
-      </Header>
+      <ThumbTexts
+        title="Que incrível que você quer dar aulas."
+        description="O primeiro passo, é preencher esse formulário de inscrição."
+      />
 
       <Wrapper>
         <Form>
