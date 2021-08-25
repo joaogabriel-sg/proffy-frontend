@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export const Container = styled.main`
   background: var(--color-primary);
@@ -89,19 +90,18 @@ export const ButtonsContainer = styled.div`
   justify-content: space-between;
 `;
 
-export const Button = styled.button`
+export const Button = styled(Link)`
   flex: 1;
   min-height: 15.8rem;
 
   padding: 2.4rem;
-  border: none;
   border-radius: 8px;
 
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 
-  cursor: pointer;
+  text-decoration: none;
   transition: background 0.2s;
 
   > span {

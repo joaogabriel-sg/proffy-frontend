@@ -32,11 +32,11 @@ export function Home() {
 
         <Footer>
           <ButtonsContainer>
-            <Button type="button">
+            <Button to="/study">
               <Icon src={studyIcon} alt="Opção de estudar." />
               <span>Estudar</span>
             </Button>
-            <Button type="button">
+            <Button to="/give-classes">
               <Icon src={giveClassesIcon} alt="Opção de dar aulas." />
               <span>Dar aulas</span>
             </Button>
