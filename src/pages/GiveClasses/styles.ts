@@ -5,11 +5,6 @@ export const Container = styled.main`
   min-height: 100%;
 `;
 
-export const Wrapper = styled.div`
-  padding: 0 0.8rem 2rem;
-  margin-top: -6.4rem;
-`;
-
 export const Form = styled.form`
   background: var(--color-box-base);
   padding-top: 4.8rem;

@@ -1,5 +1,6 @@
 import { Header } from '../../components/Header';
 import { ThumbTexts } from '../../components/ThumbTexts';
+import { Wrapper } from '../../components/Wrapper';
 import { Fieldset } from '../../components/Fieldset';
 import { FormGroup } from '../../components/FormGroup';
 
@@ -11,7 +12,6 @@ import { weekdays } from '../../helpers/weekdays';
 
 import {
   Container,
-  Wrapper,
   Form,
   PlusIcon,
   Row,
