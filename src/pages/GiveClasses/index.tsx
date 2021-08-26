@@ -1,3 +1,5 @@
+import { useForm, SubmitHandler } from 'react-hook-form';
+
 import { Header } from '../../components/Header';
 import { ThumbTexts } from '../../components/ThumbTexts';
 import { Wrapper } from '../../components/Wrapper';
@@ -21,7 +23,25 @@ import {
   Button,
 } from './styles';
 
+type FormValues = {
+  name: string;
+  avatar: string;
+  whatsapp: number;
+  bio: string;
+  schoolSubject: string;
+  price: number;
+  weekday: string;
+  hoursFrom: number;
+  hoursTo: number;
+}
+
 export function GiveClasses() {
+  const { register, handleSubmit } = useForm<FormValues>();
+
+  const handleSubmitNewProffy: SubmitHandler<FormValues> = (data) => {
+    console.log(data);
+  };
+
   return (
     <Container>
       <Header />
@@ -32,13 +52,13 @@ export function GiveClasses() {
       />
 
       <Wrapper>
-        <Form>
+        <Form onSubmit={handleSubmit(handleSubmitNewProffy)}>
           <Fieldset legend="Seus dados">
             <FormGroup
               title="Nome completo"
               name="name"
             >
-              <input type="text" name="name" id="name" />
+              <input {...register('name', { required: true })} id="name" />
             </FormGroup>
 
             <FormGroup
@@ -46,7 +66,7 @@ export function GiveClasses() {
               subtitle="comece com http://"
               name="avatar"
             >
-              <input type="url" name="avatar" id="avatar" />
+              <input type="url" {...register('avatar', { required: true })} id="avatar" />
             </FormGroup>
 
             <FormGroup
@@ -54,23 +74,23 @@ export function GiveClasses() {
               subtitle="somente números"
               name="whatsapp"
             >
-              <input type="text" name="whatsapp" id="whatsapp" />
+              <input {...register('whatsapp', { required: true })} id="whatsapp" />
             </FormGroup>
 
             <FormGroup
               title="Biografia"
               name="bio"
             >
-              <textarea name="bio" id="bio" />
+              <textarea {...register('bio', { required: true })} id="bio" />
             </FormGroup>
           </Fieldset>
 
           <Fieldset legend="Sobre a aula">
             <FormGroup
               title="Matéria"
-              name="school-subject"
+              name="schoolSubject"
             >
-              <select name="school-subject" id="school-subject">
+              <select {...register('schoolSubject', { required: true })} id="schoolSubject">
                 <option value="" disabled selected>Selecione qual você quer ensinar</option>
                 {schoolSubjects.map(({ schoolSubject, value }) => (
                   <option key={value} value={value}>{schoolSubject}</option>
@@ -83,7 +103,14 @@ export function GiveClasses() {
               subtitle="em R$"
               name="price"
             >
-              <input type="number" name="price" id="price" />
+              <input
+                type="number"
+                {...register('price', {
+                  required: true,
+                  valueAsNumber: true,
+                })}
+                id="price"
+              />
             </FormGroup>
           </Fieldset>
 
@@ -103,7 +130,7 @@ export function GiveClasses() {
                 title="Dia da semana"
                 name="weekday"
               >
-                <select name="weekday" id="weekday">
+                <select {...register('weekday', { required: true })} id="weekday">
                   <option value="" disabled selected>Selecione o dia</option>
                   {weekdays.map(({ weekday, value }) => (
                     <option key={value} value={value}>{weekday}</option>
@@ -113,16 +140,34 @@ export function GiveClasses() {
 
               <FormGroup
                 title="Das"
-                name="from"
+                name="hoursFrom"
               >
-                <input type="number" name="from" id="from" />
+                <input
+                  type="number"
+                  {...register('hoursFrom', {
+                    required: true,
+                    min: 0,
+                    max: 24,
+                    valueAsNumber: true,
+                  })}
+                  id="hoursFrom"
+                />
               </FormGroup>
 
               <FormGroup
                 title="Até"
-                name="to"
+                name="hoursTo"
               >
-                <input type="number" name="to" id="to" />
+                <input
+                  type="number"
+                  {...register('hoursTo', {
+                    required: true,
+                    min: 0,
+                    max: 24,
+                    valueAsNumber: true,
+                  })}
+                  id="hoursTo"
+                />
               </FormGroup>
             </Row>
           </Fieldset>
