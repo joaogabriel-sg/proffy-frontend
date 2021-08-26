@@ -9,6 +9,7 @@ export const Container = styled.div`
     span {
       display: flex;
       align-items: center;
+      margin-bottom: 0.8rem;
 
       font-size: 1.4rem;
       color: var(--color-text-complement);
