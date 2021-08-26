@@ -1,4 +1,6 @@
 import { useForm, SubmitHandler } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { z } from 'zod';
 
 import { Header } from '../../components/Header';
 import { ThumbTexts } from '../../components/ThumbTexts';
@@ -23,22 +25,26 @@ import {
   Button,
 } from './styles';
 
-type FormValues = {
-  name: string;
-  avatar: string;
-  whatsapp: number;
-  bio: string;
-  schoolSubject: string;
-  price: number;
-  weekday: string;
-  hoursFrom: number;
-  hoursTo: number;
-}
+const NewProffySchema = z.object({
+  name: z.string().nonempty(),
+  avatar: z.string().url().nonempty(),
+  whatsapp: z.string().nonempty(),
+  bio: z.string().nonempty(),
+  schoolSubject: z.string().nonempty(),
+  price: z.number().nonnegative(),
+  weekday: z.string().nonempty(),
+  hoursFrom: z.number().positive().min(0).max(23),
+  hoursTo: z.number().positive().min(0).max(23),
+});
+
+type NewProffySchemaType = z.infer<typeof NewProffySchema>
 
 export function GiveClasses() {
-  const { register, handleSubmit } = useForm<FormValues>();
+  const { register, handleSubmit } = useForm<NewProffySchemaType>({
+    resolver: zodResolver(NewProffySchema),
+  });
 
-  const handleSubmitNewProffy: SubmitHandler<FormValues> = (data) => {
+  const handleSubmitNewProffy: SubmitHandler<NewProffySchemaType> = (data) => {
     console.log(data);
   };
 
@@ -54,43 +60,26 @@ export function GiveClasses() {
       <Wrapper>
         <Form onSubmit={handleSubmit(handleSubmitNewProffy)}>
           <Fieldset legend="Seus dados">
-            <FormGroup
-              title="Nome completo"
-              name="name"
-            >
-              <input {...register('name', { required: true })} id="name" />
+            <FormGroup title="Nome completo" name="name">
+              <input {...register('name')} id="name" />
             </FormGroup>
 
-            <FormGroup
-              title="Link da sua foto"
-              subtitle="comece com http://"
-              name="avatar"
-            >
-              <input type="url" {...register('avatar', { required: true })} id="avatar" />
+            <FormGroup title="Link da sua foto" subtitle="comece com http://" name="avatar">
+              <input {...register('avatar')} id="avatar" />
             </FormGroup>
 
-            <FormGroup
-              title="WhatsApp"
-              subtitle="somente números"
-              name="whatsapp"
-            >
-              <input {...register('whatsapp', { required: true })} id="whatsapp" />
+            <FormGroup title="WhatsApp" subtitle="somente números" name="whatsapp">
+              <input {...register('whatsapp')} id="whatsapp" />
             </FormGroup>
 
-            <FormGroup
-              title="Biografia"
-              name="bio"
-            >
-              <textarea {...register('bio', { required: true })} id="bio" />
+            <FormGroup title="Biografia" name="bio">
+              <textarea {...register('bio')} id="bio" />
             </FormGroup>
           </Fieldset>
 
           <Fieldset legend="Sobre a aula">
-            <FormGroup
-              title="Matéria"
-              name="schoolSubject"
-            >
-              <select {...register('schoolSubject', { required: true })} id="schoolSubject">
+            <FormGroup title="Matéria" name="schoolSubject">
+              <select {...register('schoolSubject')} id="schoolSubject">
                 <option value="" disabled selected>Selecione qual você quer ensinar</option>
                 {schoolSubjects.map(({ schoolSubject, value }) => (
                   <option key={value} value={value}>{schoolSubject}</option>
@@ -98,19 +87,8 @@ export function GiveClasses() {
               </select>
             </FormGroup>
 
-            <FormGroup
-              title="Custo da sua hora por aula"
-              subtitle="em R$"
-              name="price"
-            >
-              <input
-                type="number"
-                {...register('price', {
-                  required: true,
-                  valueAsNumber: true,
-                })}
-                id="price"
-              />
+            <FormGroup title="Custo da sua hora por aula" subtitle="em R$" name="price">
+              <input type="number" {...register('price', { valueAsNumber: true })} id="price" />
             </FormGroup>
           </Fieldset>
 
@@ -126,11 +104,8 @@ export function GiveClasses() {
             )}
           >
             <Row>
-              <FormGroup
-                title="Dia da semana"
-                name="weekday"
-              >
-                <select {...register('weekday', { required: true })} id="weekday">
+              <FormGroup title="Dia da semana" name="weekday">
+                <select {...register('weekday')} id="weekday">
                   <option value="" disabled selected>Selecione o dia</option>
                   {weekdays.map(({ weekday, value }) => (
                     <option key={value} value={value}>{weekday}</option>
@@ -138,36 +113,12 @@ export function GiveClasses() {
                 </select>
               </FormGroup>
 
-              <FormGroup
-                title="Das"
-                name="hoursFrom"
-              >
-                <input
-                  type="number"
-                  {...register('hoursFrom', {
-                    required: true,
-                    min: 0,
-                    max: 24,
-                    valueAsNumber: true,
-                  })}
-                  id="hoursFrom"
-                />
+              <FormGroup title="Das" name="hoursFrom">
+                <input type="number" {...register('hoursFrom', { valueAsNumber: true })} id="hoursFrom" />
               </FormGroup>
 
-              <FormGroup
-                title="Até"
-                name="hoursTo"
-              >
-                <input
-                  type="number"
-                  {...register('hoursTo', {
-                    required: true,
-                    min: 0,
-                    max: 24,
-                    valueAsNumber: true,
-                  })}
-                  id="hoursTo"
-                />
+              <FormGroup title="Até" name="hoursTo">
+                <input type="number" {...register('hoursTo', { valueAsNumber: true })} id="hoursTo" />
               </FormGroup>
             </Row>
           </Fieldset>
@@ -181,7 +132,7 @@ export function GiveClasses() {
               </div>
             </Warning>
 
-            <Button>Salvar Cadastro</Button>
+            <Button type="button">Salvar Cadastro</Button>
           </Footer>
         </Form>
       </Wrapper>
