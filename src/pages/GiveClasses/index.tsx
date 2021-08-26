@@ -1,5 +1,6 @@
 import { Header } from '../../components/Header';
 import { ThumbTexts } from '../../components/ThumbTexts';
+import { Fieldset } from '../../components/Fieldset';
 import { FormGroup } from '../../components/FormGroup';
 
 import plusIcon from '../../assets/plus-symbol.svg';
@@ -9,7 +10,6 @@ import {
   Container,
   Wrapper,
   Form,
-  Fieldset,
   PlusIcon,
   Row,
   Footer,
@@ -30,9 +30,7 @@ export function GiveClasses() {
 
       <Wrapper>
         <Form>
-          <Fieldset>
-            <legend>Seus dados</legend>
-
+          <Fieldset legend="Seus dados">
             <FormGroup
               title="Nome completo"
               name="name"
@@ -64,9 +62,7 @@ export function GiveClasses() {
             </FormGroup>
           </Fieldset>
 
-          <Fieldset>
-            <legend>Sobre a aula</legend>
-
+          <Fieldset legend="Sobre a aula">
             <FormGroup
               title="Matéria"
               name="school-subject"
@@ -89,15 +85,17 @@ export function GiveClasses() {
             </FormGroup>
           </Fieldset>
 
-          <Fieldset>
-            <legend>
-              Horários disponíveis
-              <button type="button">
-                <PlusIcon src={plusIcon} />
-                Novo horário
-              </button>
-            </legend>
-
+          <Fieldset
+            legend={(
+              <>
+                Horários disponíveis
+                <button type="button">
+                  <PlusIcon src={plusIcon} />
+                  Novo horário
+                </button>
+              </>
+            )}
+          >
             <Row>
               <FormGroup
                 title="Dia da semana"
