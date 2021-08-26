@@ -6,6 +6,9 @@ import { FormGroup } from '../../components/FormGroup';
 import plusIcon from '../../assets/plus-symbol.svg';
 import warningIcon from '../../assets/warning.svg';
 
+import { schoolSubjects } from '../../helpers/schoolSubjects';
+import { weekdays } from '../../helpers/weekdays';
+
 import {
   Container,
   Wrapper,
@@ -68,11 +71,10 @@ export function GiveClasses() {
               name="school-subject"
             >
               <select name="school-subject" id="school-subject">
-                <option value="matematica">Matemática</option>
-                <option value="ingles">Inglês</option>
-                <option value="historia">História</option>
-                <option value="geografia">Geografia</option>
-                <option value="quimica">Química</option>
+                <option value="" disabled selected>Selecione qual você quer ensinar</option>
+                {schoolSubjects.map(({ schoolSubject, value }) => (
+                  <option key={value} value={value}>{schoolSubject}</option>
+                ))}
               </select>
             </FormGroup>
 
@@ -101,17 +103,12 @@ export function GiveClasses() {
                 title="Dia da semana"
                 name="weekday"
               >
-                <div>
-                  <select name="weekday" id="weekday">
-                    <option value="monday">Segunda-feira</option>
-                    <option value="tuesday">Terça-feira</option>
-                    <option value="wednesday">Quarta-feira</option>
-                    <option value="thursday">Quinta-feira</option>
-                    <option value="friday">Sexta-feira</option>
-                    <option value="saturday">Sábado</option>
-                    <option value="sunday">Domingo</option>
-                  </select>
-                </div>
+                <select name="weekday" id="weekday">
+                  <option value="" disabled selected>Selecione o dia</option>
+                  {weekdays.map(({ weekday, value }) => (
+                    <option key={value} value={value}>{weekday}</option>
+                  ))}
+                </select>
               </FormGroup>
 
               <FormGroup
