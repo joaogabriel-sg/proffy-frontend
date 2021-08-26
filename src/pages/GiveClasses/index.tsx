@@ -1,5 +1,6 @@
 import { Header } from '../../components/Header';
 import { ThumbTexts } from '../../components/ThumbTexts';
+import { FormGroup } from '../../components/FormGroup';
 
 import plusIcon from '../../assets/plus-symbol.svg';
 import warningIcon from '../../assets/warning.svg';
@@ -9,8 +10,8 @@ import {
   Wrapper,
   Form,
   Fieldset,
-  FormGroup,
   PlusIcon,
+  Row,
   Footer,
   Warning,
   WarningIcon,
@@ -32,65 +33,59 @@ export function GiveClasses() {
           <Fieldset>
             <legend>Seus dados</legend>
 
-            <FormGroup>
-              <label htmlFor="name">
-                <span>Nome completo</span>
-                <input type="text" name="name" id="name" />
-              </label>
+            <FormGroup
+              title="Nome completo"
+              name="name"
+            >
+              <input type="text" name="name" id="name" />
             </FormGroup>
 
-            <FormGroup>
-              <label htmlFor="avatar">
-                <span>
-                  Link da sua foto
-                  <small>(comece com http://)</small>
-                </span>
-                <input type="text" name="avatar" id="avatar" />
-              </label>
+            <FormGroup
+              title="Link da sua foto"
+              subtitle="comece com http://"
+              name="avatar"
+            >
+              <input type="url" name="avatar" id="avatar" />
             </FormGroup>
 
-            <FormGroup>
-              <label htmlFor="whatsapp">
-                <span>
-                  WhatsApp
-                  <small>(somente números)</small>
-                </span>
-                <input type="text" name="whatsapp" id="whatsapp" />
-              </label>
+            <FormGroup
+              title="WhatsApp"
+              subtitle="somente números"
+              name="whatsapp"
+            >
+              <input type="text" name="whatsapp" id="whatsapp" />
             </FormGroup>
 
-            <FormGroup>
-              <label htmlFor="bio">
-                <span>Biografia</span>
-                <textarea name="bio" id="bio" />
-              </label>
+            <FormGroup
+              title="Biografia"
+              name="bio"
+            >
+              <textarea name="bio" id="bio" />
             </FormGroup>
           </Fieldset>
 
           <Fieldset>
             <legend>Sobre a aula</legend>
 
-            <FormGroup>
-              <label htmlFor="school-subject">
-                <span>Matéria</span>
-                <select name="school-subject" id="school-subject">
-                  <option value="matematica">Matemática</option>
-                  <option value="ingles">Inglês</option>
-                  <option value="historia">História</option>
-                  <option value="geografia">Geografia</option>
-                  <option value="quimica">Química</option>
-                </select>
-              </label>
+            <FormGroup
+              title="Matéria"
+              name="school-subject"
+            >
+              <select name="school-subject" id="school-subject">
+                <option value="matematica">Matemática</option>
+                <option value="ingles">Inglês</option>
+                <option value="historia">História</option>
+                <option value="geografia">Geografia</option>
+                <option value="quimica">Química</option>
+              </select>
             </FormGroup>
 
-            <FormGroup>
-              <label htmlFor="avatar">
-                <span>
-                  Custo da sua hora por aula
-                  <small>(em R$)</small>
-                </span>
-                <input type="number" name="price" id="price" />
-              </label>
+            <FormGroup
+              title="Custo da sua hora por aula"
+              subtitle="em R$"
+              name="price"
+            >
+              <input type="number" name="price" id="price" />
             </FormGroup>
           </Fieldset>
 
@@ -103,10 +98,12 @@ export function GiveClasses() {
               </button>
             </legend>
 
-            <FormGroup className="available-times">
-              <div>
-                <label htmlFor="weekday">
-                  <span>Dia da semana</span>
+            <Row>
+              <FormGroup
+                title="Dia da semana"
+                name="weekday"
+              >
+                <div>
                   <select name="weekday" id="weekday">
                     <option value="monday">Segunda-feira</option>
                     <option value="tuesday">Terça-feira</option>
@@ -116,23 +113,23 @@ export function GiveClasses() {
                     <option value="saturday">Sábado</option>
                     <option value="sunday">Domingo</option>
                   </select>
-                </label>
-              </div>
+                </div>
+              </FormGroup>
 
-              <div>
-                <label htmlFor="from">
-                  <span>Das</span>
-                  <input type="number" name="from" id="from" />
-                </label>
-              </div>
+              <FormGroup
+                title="Das"
+                name="from"
+              >
+                <input type="number" name="from" id="from" />
+              </FormGroup>
 
-              <div>
-                <label htmlFor="to">
-                  <span>Até</span>
-                  <input type="number" name="to" id="to" />
-                </label>
-              </div>
-            </FormGroup>
+              <FormGroup
+                title="Até"
+                name="to"
+              >
+                <input type="number" name="to" id="to" />
+              </FormGroup>
+            </Row>
           </Fieldset>
 
           <Footer>

@@ -1,61 +1,9 @@
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
 
 export const Container = styled.main`
   background: var(--color-background);
   min-height: 100%;
 `;
-
-export const Header = styled.header`
-  background: var(--color-primary);
-  width: 100%;
-  padding: 1.8rem 0.8rem 12.8rem;
-`;
-
-export const HeaderContent = styled.div`
-  width: 100%;
-
-  @media (min-width: 700px) {
-    > div:nth-child(1) {
-      max-width: 112rem;
-      margin: 0 auto;
-    }
-
-    > div:nth-child(2) {
-      max-width: 73.6rem;
-      margin: 0 auto;
-    }
-  }
-
-  > div:nth-child(1) {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-
-  > div:nth-child(2) {
-    > h2 {
-      width: min(40rem, 60vw);
-      margin: 4.2rem 0 2.4rem;
-
-      font-family: 'Archivo', Arial, Helvetica, sans-serif;
-      font-size: min(3.6rem, 5vw);
-      line-height: 4.2rem;
-      color: var(--color-title-in-primary);
-    }
-
-    > p {
-      width: 30rem;
-
-      font-size: min(1.6rem, 3vw);
-      color: var(--color-text-in-primary);
-    }
-  }
-`;
-
-export const ArrowBack = styled(Link)``;
-
-export const Logo = styled.img``;
 
 export const Wrapper = styled.div`
   padding: 0 0.8rem 2rem;
@@ -114,73 +62,18 @@ export const Fieldset = styled.fieldset`
   }
 `;
 
-export const FormGroup = styled.div`
-  & + & {
+export const Row = styled.div`
+  div + div {
     margin-top: 2.4rem;
   }
 
-  label {
-    span {
-      display: flex;
-      align-items: center;
+  @media (min-width: 700px) {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 1.6rem;
 
-      font-size: 1.4rem;
-      color: var(--color-text-complement);
-
-      small {
-        margin-left: 1.2rem;
-        font-size: 1.2rem;
-        opacity: 0.5;
-      }
-    }
-
-    input,
-    textarea,
-    select {
-      background: var(--color-box-footer);
-      width: 100%;
-
-      padding: 0.4rem 1.2rem;
-      border: 1px solid var(--color-line-in-white);
-      border-radius: 8px;
-      outline: none;
-
-      color: var(--color-text-base);
-      transition: border-color 0.2s ease-in-out;
-
-      &:focus {
-        border-color: var(--color-primary);
-      }
-    }
-
-    input,
-    select {
-      height: min(5.6rem, 10vw);
-    }
-
-    textarea {
-      min-height: 12rem;
-      resize: vertical;
-
-      @media (min-width: 700px) {
-        min-height: 16.8rem;
-      }
-    }
-  }
-
-  &.available-times {
-    > div + div {
-      margin-top: 2.4rem;
-    }
-
-    @media (min-width: 700px) {
-      display: grid;
-      grid-template-columns: 2fr 1fr 1fr;
-      gap: 1.6rem;
-
-      > div + div {
-        margin-top: 0;
-      }
+    div + div {
+      margin-top: 0 !important;
     }
   }
 `;

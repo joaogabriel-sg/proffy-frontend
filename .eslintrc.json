@@ -23,6 +23,7 @@
     "react/jsx-filename-extension": [1, { "extensions": [".jsx", ".tsx"] }],
     "react/react-in-jsx-scope": "off",
     "react/require-default-props": "off",
+    "react/jsx-props-no-spreading": "off",
     "import/extensions": "off",
     "import/no-unresolved": "off",
     "import/prefer-default-export": "off",
