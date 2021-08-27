@@ -55,3 +55,8 @@ export const Container = styled.div`
     }
   }
 `;
+
+export const ErrorMessage = styled.small`
+  font-size: 1.2rem;
+  color: var(--color-text-complement);
+`;
