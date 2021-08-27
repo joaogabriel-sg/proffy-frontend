@@ -26,21 +26,44 @@ import {
 } from './styles';
 
 const NewProffySchema = z.object({
-  name: z.string().nonempty(),
-  avatar: z.string().url().nonempty(),
-  whatsapp: z.string().nonempty(),
-  bio: z.string().nonempty(),
-  schoolSubject: z.string().nonempty(),
-  price: z.number().nonnegative(),
-  weekday: z.string().nonempty(),
-  hoursFrom: z.number().positive().min(0).max(23),
-  hoursTo: z.number().positive().min(0).max(23),
+  name: z.string().nonempty({ message: 'Seu nome completo é fundamental em nossa plataforma.' }),
+  avatar: z
+    .string()
+    .nonempty({ message: 'Coloque o link da sua foto para que os alunos o conheçam.' })
+    .url({ message: 'O link da imagem é inválido, tente utilizar um link como http://meusite.com/minha-imagem.jpg' }),
+  whatsapp: z
+    .string()
+    .nonempty({ message: 'O WhatsApp é um excelente meio para acolher possíveis alunos, lembre-se de preencher.' }),
+  bio: z
+    .string()
+    .nonempty({ message: 'Invista bastante numa boa biografia para atrair a atenção dos alunos.' }),
+  schoolSubject: z
+    .string()
+    .nonempty({ message: 'Eita, parece que você esqueceu de escolher a matéria que lecionará.' }),
+  price: z
+    .number()
+    .positive({ message: 'Não se esqueça do preço da sua hora de aula.' }),
+  weekday: z.string().nonempty({ message: 'Parece que você não selecionou o dia da aula.' }),
+  hoursFrom: z
+    .number()
+    .nonnegative({ message: 'A hora está errada, use horários entre 0 e 23.' })
+    .min(0)
+    .max(23, { message: 'Um momento, a hora máxima é 23h.' })
+    .int({ message: 'Infelizmente não é possível usar números "quebrados".' }),
+  hoursTo: z
+    .number()
+    .nonnegative({ message: 'A hora está errada, use horários entre 0 e 23.' })
+    .min(0)
+    .max(23, { message: 'Um momento, a hora máxima é 23h.' })
+    .int({ message: 'Infelizmente não é possível usar números "quebrados".' }),
 });
 
 type NewProffySchemaType = z.infer<typeof NewProffySchema>
 
 export function GiveClasses() {
-  const { register, handleSubmit } = useForm<NewProffySchemaType>({
+  const {
+    register, handleSubmit, formState: { errors },
+  } = useForm<NewProffySchemaType>({
     resolver: zodResolver(NewProffySchema),
   });
 
@@ -60,35 +83,49 @@ export function GiveClasses() {
       <Wrapper>
         <Form onSubmit={handleSubmit(handleSubmitNewProffy)}>
           <Fieldset legend="Seus dados">
-            <FormGroup title="Nome completo" name="name">
+            <FormGroup title="Nome completo" name="name" errorMessage={errors.name?.message}>
               <input {...register('name')} id="name" />
             </FormGroup>
 
-            <FormGroup title="Link da sua foto" subtitle="comece com http://" name="avatar">
+            <FormGroup
+              title="Link da sua foto"
+              subtitle="comece com http://"
+              name="avatar"
+              errorMessage={errors.avatar?.message}
+            >
               <input {...register('avatar')} id="avatar" />
             </FormGroup>
 
-            <FormGroup title="WhatsApp" subtitle="somente números" name="whatsapp">
-              <input {...register('whatsapp')} id="whatsapp" />
+            <FormGroup
+              title="WhatsApp"
+              subtitle="somente números"
+              name="whatsapp"
+              errorMessage={errors.whatsapp?.message}
+            >
+              <input {...register('whatsapp', {})} id="whatsapp" />
             </FormGroup>
 
-            <FormGroup title="Biografia" name="bio">
+            <FormGroup title="Biografia" name="bio" errorMessage={errors.bio?.message}>
               <textarea {...register('bio')} id="bio" />
             </FormGroup>
           </Fieldset>
 
           <Fieldset legend="Sobre a aula">
-            <FormGroup title="Matéria" name="schoolSubject">
+            <FormGroup title="Matéria" name="schoolSubject" errorMessage={errors.schoolSubject?.message}>
               <select {...register('schoolSubject')} id="schoolSubject">
-                <option value="" disabled selected>Selecione qual você quer ensinar</option>
                 {schoolSubjects.map(({ schoolSubject, value }) => (
                   <option key={value} value={value}>{schoolSubject}</option>
                 ))}
               </select>
             </FormGroup>
 
-            <FormGroup title="Custo da sua hora por aula" subtitle="em R$" name="price">
-              <input type="number" {...register('price', { valueAsNumber: true })} id="price" />
+            <FormGroup
+              title="Custo da sua hora por aula"
+              subtitle="em R$"
+              name="price"
+              errorMessage={errors.price?.message}
+            >
+              <input type="number" {...register('price', { valueAsNumber: true })} id="price" defaultValue={0} />
             </FormGroup>
           </Fieldset>
 
@@ -104,21 +141,30 @@ export function GiveClasses() {
             )}
           >
             <Row>
-              <FormGroup title="Dia da semana" name="weekday">
+              <FormGroup title="Dia da semana" name="weekday" errorMessage={errors.weekday?.message}>
                 <select {...register('weekday')} id="weekday">
-                  <option value="" disabled selected>Selecione o dia</option>
                   {weekdays.map(({ weekday, value }) => (
                     <option key={value} value={value}>{weekday}</option>
                   ))}
                 </select>
               </FormGroup>
 
-              <FormGroup title="Das" name="hoursFrom">
-                <input type="number" {...register('hoursFrom', { valueAsNumber: true })} id="hoursFrom" />
+              <FormGroup title="Das" name="hoursFrom" errorMessage={errors.hoursFrom?.message}>
+                <input
+                  type="number"
+                  {...register('hoursFrom', { valueAsNumber: true })}
+                  id="hoursFrom"
+                  defaultValue={0}
+                />
               </FormGroup>
 
-              <FormGroup title="Até" name="hoursTo">
-                <input type="number" {...register('hoursTo', { valueAsNumber: true })} id="hoursTo" />
+              <FormGroup title="Até" name="hoursTo" errorMessage={errors.hoursTo?.message}>
+                <input
+                  type="number"
+                  {...register('hoursTo', { valueAsNumber: true })}
+                  id="hoursTo"
+                  defaultValue={0}
+                />
               </FormGroup>
             </Row>
           </Fieldset>
@@ -132,7 +178,7 @@ export function GiveClasses() {
               </div>
             </Warning>
 
-            <Button type="button">Salvar Cadastro</Button>
+            <Button type="submit">Salvar Cadastro</Button>
           </Footer>
         </Form>
       </Wrapper>
