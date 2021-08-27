@@ -1,4 +1,4 @@
-import { useForm, SubmitHandler } from 'react-hook-form';
+import { useForm, SubmitHandler, useFieldArray } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 
@@ -30,14 +30,26 @@ type NewProffySchemaType = z.infer<typeof newProffySchema>
 
 export function GiveClasses() {
   const {
-    register, handleSubmit, formState: { errors },
+    register, control, handleSubmit, formState: { errors },
   } = useForm<NewProffySchemaType>({
     resolver: zodResolver(newProffySchema),
+    defaultValues: {
+      classes: [{ weekday: 'monday', hoursFrom: 0, hoursTo: 0 }],
+    },
+  });
+
+  const { fields, append } = useFieldArray({
+    name: 'classes',
+    control,
   });
 
   const handleSubmitNewProffy: SubmitHandler<NewProffySchemaType> = (data) => {
     console.log(data);
   };
+
+  function handleCreateNewHour() {
+    append({ weekday: 'monday', hoursFrom: 0, hoursTo: 0 });
+  }
 
   return (
     <Container>
@@ -101,40 +113,42 @@ export function GiveClasses() {
             legend={(
               <>
                 Horários disponíveis
-                <button type="button">
+                <button type="button" onClick={handleCreateNewHour}>
                   <PlusIcon src={plusIcon} />
                   Novo horário
                 </button>
               </>
             )}
           >
-            <Row>
-              <FormGroup title="Dia da semana" name="weekday" errorMessage={errors.weekday?.message}>
-                <select {...register('weekday')} id="weekday">
-                  {weekdays.map(({ weekday, value }) => (
-                    <option key={value} value={value}>{weekday}</option>
-                  ))}
-                </select>
-              </FormGroup>
+            {fields.map((field, index) => (
+              <Row key={field.id}>
+                <FormGroup title="Dia da semana" name="weekday">
+                  <select {...register(`classes.${index}.weekday`)} id="weekday">
+                    {weekdays.map(({ weekday, value }) => (
+                      <option key={value} value={value}>{weekday}</option>
+                    ))}
+                  </select>
+                </FormGroup>
 
-              <FormGroup title="Das" name="hoursFrom" errorMessage={errors.hoursFrom?.message}>
-                <input
-                  type="number"
-                  {...register('hoursFrom', { valueAsNumber: true })}
-                  id="hoursFrom"
-                  defaultValue={0}
-                />
-              </FormGroup>
+                <FormGroup title="Das" name="hoursFrom">
+                  <input
+                    type="number"
+                    {...register(`classes.${index}.hoursFrom`, { valueAsNumber: true })}
+                    id="hoursFrom"
+                    defaultValue={0}
+                  />
+                </FormGroup>
 
-              <FormGroup title="Até" name="hoursTo" errorMessage={errors.hoursTo?.message}>
-                <input
-                  type="number"
-                  {...register('hoursTo', { valueAsNumber: true })}
-                  id="hoursTo"
-                  defaultValue={0}
-                />
-              </FormGroup>
-            </Row>
+                <FormGroup title="Até" name="hoursTo">
+                  <input
+                    type="number"
+                    {...register(`classes.${index}.hoursTo`, { valueAsNumber: true })}
+                    id="hoursTo"
+                    defaultValue={0}
+                  />
+                </FormGroup>
+              </Row>
+            ))}
           </Fieldset>
 
           <Footer>

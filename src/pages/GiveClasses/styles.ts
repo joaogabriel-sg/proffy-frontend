@@ -19,6 +19,10 @@ export const Form = styled.form`
 `;
 
 export const Row = styled.div`
+  & + & {
+    margin-top: 6.4rem;
+  }
+
   div + div {
     margin-top: 2.4rem;
   }
@@ -27,6 +31,10 @@ export const Row = styled.div`
     display: grid;
     grid-template-columns: 2fr 1fr 1fr;
     gap: 1.6rem;
+
+    & + & {
+      margin-top: 2.4rem;
+    }
 
     div + div {
       margin-top: 0 !important;
