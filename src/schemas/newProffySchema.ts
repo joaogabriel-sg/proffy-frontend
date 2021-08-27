@@ -18,17 +18,21 @@ export const newProffySchema = z.object({
   price: z
     .number()
     .positive({ message: 'Não se esqueça do preço da sua hora de aula.' }),
-  weekday: z.string().nonempty({ message: 'Parece que você não selecionou o dia da aula.' }),
-  hoursFrom: z
-    .number()
-    .nonnegative({ message: 'A hora está errada, use horários entre 0 e 23.' })
-    .min(0)
-    .max(23, { message: 'Um momento, a hora máxima é 23h.' })
-    .int({ message: 'Infelizmente não é possível usar números "quebrados".' }),
-  hoursTo: z
-    .number()
-    .nonnegative({ message: 'A hora está errada, use horários entre 0 e 23.' })
-    .min(0)
-    .max(23, { message: 'Um momento, a hora máxima é 23h.' })
-    .int({ message: 'Infelizmente não é possível usar números "quebrados".' }),
+  classes: z
+    .object({
+      weekday: z.string().nonempty({ message: 'Parece que você não selecionou o dia da aula.' }),
+      hoursFrom: z
+        .number()
+        .nonnegative({ message: 'A hora está errada, use horários entre 0 e 23.' })
+        .min(0)
+        .max(23, { message: 'Um momento, a hora máxima é 23h.' })
+        .int({ message: 'Infelizmente não é possível usar números "quebrados".' }),
+      hoursTo: z
+        .number()
+        .nonnegative({ message: 'A hora está errada, use horários entre 0 e 23.' })
+        .min(0)
+        .max(23, { message: 'Um momento, a hora máxima é 23h.' })
+        .int({ message: 'Infelizmente não é possível usar números "quebrados".' }),
+    })
+    .array(),
 });
