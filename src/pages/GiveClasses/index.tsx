@@ -12,8 +12,9 @@ import { Button } from '../../components/Button';
 import plusIcon from '../../assets/plus-symbol.svg';
 import warningIcon from '../../assets/warning.svg';
 
-import { schoolSubjects } from '../../helpers/schoolSubjects';
-import { weekdays } from '../../helpers/weekdays';
+import { schoolSubjects } from '../../mocks/schoolSubjects';
+import { weekdays } from '../../mocks/weekdays';
+
 import { newProffySchema } from '../../schemas/newProffySchema';
 
 import {
