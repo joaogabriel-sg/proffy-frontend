@@ -1,3 +1,5 @@
+import { LinkButton } from '../../components/Button';
+
 import logoImg from '../../assets/logo.svg';
 import landingImg from '../../assets/landing.svg';
 import giveClassesIcon from '../../assets/give-classes.svg';
@@ -12,7 +14,6 @@ import {
   Logo,
   Footer,
   ButtonsContainer,
-  Button,
   Icon,
   Description,
   PurpleHeartIcon,
@@ -32,14 +33,14 @@ export function Home() {
 
         <Footer>
           <ButtonsContainer>
-            <Button to="/study">
+            <LinkButton to="/study" isPrimary>
               <Icon src={studyIcon} alt="Opção de estudar." />
               <span>Estudar</span>
-            </Button>
-            <Button to="/give-classes">
+            </LinkButton>
+            <LinkButton to="/give-classes">
               <Icon src={giveClassesIcon} alt="Opção de dar aulas." />
               <span>Dar aulas</span>
-            </Button>
+            </LinkButton>
           </ButtonsContainer>
 
           <Description>

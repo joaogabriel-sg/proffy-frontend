@@ -104,41 +104,4 @@ export const Footer = styled.footer`
       }
     }
   }
-
-  > button {
-    background: var(--color-secondary);
-    height: 5.6rem;
-    padding: 0 1.2rem;
-    border: none;
-    border-radius: 8px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    font-family: 'Archivo', Arial, Helvetica, sans-serif;
-    font-size: 1.6rem;
-    font-weight: 600;
-    color: var(--color-button-text);
-
-    cursor: pointer;
-    transition: background 0.2s ease-in-out;
-
-    &:hover {
-      background: var(--color-secondary-dark);
-    }
-
-    > img {
-      margin-right: 0.8rem;
-    }
-
-    @media(min-width: 700px) {
-      min-width: 20rem;
-      padding: 0 0.6rem;
-
-      > img {
-        margin-right: 1.6rem;
-      }
-    }
-  }
 `;

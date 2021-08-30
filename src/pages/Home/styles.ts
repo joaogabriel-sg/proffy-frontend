@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
 
 export const Container = styled.main`
   background: var(--color-primary);
@@ -88,65 +87,32 @@ export const Footer = styled.footer`
 export const ButtonsContainer = styled.div`
   display: flex;
   justify-content: space-between;
-`;
 
-export const Button = styled(Link)`
-  flex: 1;
-  min-height: 15.8rem;
+  > a {
+    flex: 1;
+    min-height: 15.8rem;
+    padding: 2.4rem;
 
-  padding: 2.4rem;
-  border-radius: 8px;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
 
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-
-  text-decoration: none;
-  transition: background 0.2s;
-
-  > span {
-    font-family: 'Archivo', Arial, Helvetica, sans-serif;
-    font-size: 2rem;
-    font-weight: 700;
-    text-align: left;
-    color: var(--color-title-in-primary);
-  }
-
-  & + & {
-    margin-left: 1.6rem;
-  }
-
-  @media (min-width: 750px) {
-    min-width: 16rem;
-  }
-
-  &:nth-child(1) {
-    background: var(--color-primary-lighter);
-
-    &:hover {
-      background: var(--color-primary-dark);
+    + a {
+      margin-left: 1.6rem;
     }
-  }
-
-  &:nth-child(2) {
-    background: var(--color-secondary);
-
-    &:hover {
-      background: var(--color-secondary-dark);
-    }
-  }
-
-  @media (min-width: 850px) {
-    min-height: auto;
-    width: 24rem;
-    height: 11.2rem;
-
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
 
     > span {
-      margin-left: 1.2rem;
+      font-size: 2rem;
+      text-align: left;
+    }
+
+    @media (min-width: 850px) {
+      min-height: auto;
+      height: 11.2rem;
+
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
     }
   }
 `;

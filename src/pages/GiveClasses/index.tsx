@@ -7,6 +7,7 @@ import { ThumbTexts } from '../../components/ThumbTexts';
 import { Wrapper } from '../../components/Wrapper';
 import { Fieldset } from '../../components/Fieldset';
 import { FormGroup } from '../../components/FormGroup';
+import { Button } from '../../components/Button';
 
 import plusIcon from '../../assets/plus-symbol.svg';
 import warningIcon from '../../assets/warning.svg';
@@ -23,7 +24,6 @@ import {
   Footer,
   Warning,
   WarningIcon,
-  Button,
 } from './styles';
 
 type NewProffySchemaType = z.infer<typeof newProffySchema>

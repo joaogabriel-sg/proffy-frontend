@@ -49,6 +49,7 @@ export const PlusIcon = styled.img`
 export const Footer = styled.footer`
   background: var(--color-box-footer);
   padding: 4.8rem 2.4rem;
+  border-top: 1px solid var(--color-line-in-white);
 
   display: flex;
   flex-direction: column-reverse;

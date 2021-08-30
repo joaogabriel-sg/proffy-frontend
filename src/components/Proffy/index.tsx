@@ -1,3 +1,7 @@
+import { Button } from '../Button';
+
+import { currencyFormat } from '../../utils/currencyFormat';
+
 import whatsappLogoImg from '../../assets/whatsapp.svg';
 
 import {
@@ -7,8 +11,6 @@ import {
   Bio,
   Footer,
 } from './styles';
-
-import { currencyFormat } from '../../utils/currencyFormat';
 
 type ProffyProps = {
   name: string;
@@ -39,10 +41,10 @@ export function Proffy({
           Preço/hora
           <strong>{currencyFormat(price)}</strong>
         </span>
-        <button type="button">
+        <Button type="button">
           <img src={whatsappLogoImg} alt={whatsapp} />
           Entrar em contato
-        </button>
+        </Button>
       </Footer>
     </Container>
   );
