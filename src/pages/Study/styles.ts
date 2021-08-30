@@ -1,3 +1,69 @@
 import styled from 'styled-components';
 
-export const Container = styled.main``;
+export const Container = styled.main`
+  background: var(--color-background);
+  min-height: 100%;
+`;
+
+export const Filters = styled.section`
+  background: var(--color-primary);
+  padding: 0 0.8rem 12rem;
+  margin-top: -9.2rem;
+
+  > div {
+    display: flex;
+    flex-direction: column;
+
+    @media (min-width: 650px) {
+      flex-direction: row;
+      max-width: 73.6rem;
+      margin: 0 auto;
+    }
+
+    > div {
+      width: 100%;
+
+      + div {
+        margin-top: 0.8rem;
+
+        @media (min-width: 650px) {
+          margin-top: 0;
+          margin-left: 1.6rem;
+        }
+      }
+
+      span {
+        margin-bottom: 0.4rem;
+        color: var(--color-text-in-primary);
+      }
+
+      select {
+        background: var(--color-box-footer);
+        width: 100%;
+        height: min(5.6rem, 10vw);
+
+        padding: 0.4rem 1.2rem;
+        border: 1px solid var(--color-line-in-white);
+        border-radius: 8px;
+        outline: none;
+
+        color: var(--color-text-base);
+        transition: border-color 0.2s ease-in-out;
+
+        &:focus {
+          border-color: var(--color-primary);
+        }
+      }
+    }
+  }
+`;
+
+export const Proffys = styled.section`
+  display: flex;
+  flex-direction: column;
+
+  @media (min-width: 700px) {
+    max-width: 73.6rem;
+    margin: 0 auto;
+  }
+`;
