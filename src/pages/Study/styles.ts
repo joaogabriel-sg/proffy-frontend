@@ -21,27 +21,9 @@ export const Filters = styled.section`
         margin-top: 0.8rem;
       }
 
-      span {
+      > span {
         margin-bottom: 0.4rem;
         color: var(--color-text-in-primary);
-      }
-
-      select {
-        background: var(--color-box-footer);
-        width: 100%;
-        height: min(5.6rem, 10vw);
-
-        padding: 0.4rem 1.2rem;
-        border: 1px solid var(--color-line-in-white);
-        border-radius: 8px;
-        outline: none;
-
-        color: var(--color-text-base);
-        transition: border-color 0.2s ease-in-out;
-
-        &:focus {
-          border-color: var(--color-primary);
-        }
       }
     }
   }

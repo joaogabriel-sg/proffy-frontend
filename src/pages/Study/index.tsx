@@ -2,6 +2,7 @@ import { Header } from '../../components/Header';
 import { Proffy } from '../../components/Proffy';
 import { ThumbTexts } from '../../components/ThumbTexts';
 import { Wrapper } from '../../components/Wrapper';
+import { Select } from '../../components/FormElements';
 
 import {
   Container,
@@ -22,27 +23,27 @@ export function Study() {
         <div>
           <div>
             <span>Matéria</span>
-            <select name="weekday" id="weekday">
+            <Select name="weekday" id="weekday">
               <option value="">Selecione</option>
               <option value="math">Matemática</option>
               <option value="portuguese">Português</option>
-            </select>
+            </Select>
           </div>
 
           <div>
             <span>Dia da semana</span>
-            <select name="weekday" id="weekday">
+            <Select name="weekday" id="weekday">
               <option value="">Selecione</option>
               <option value="monday">Segunda-feira</option>
-            </select>
+            </Select>
           </div>
 
           <div>
             <span>Horário</span>
-            <select name="weekday" id="weekday">
+            <Select name="weekday" id="weekday">
               <option value="">Selecione</option>
               <option value="8-9">8:00 - 9:00</option>
-            </select>
+            </Select>
           </div>
         </div>
       </Filters>

@@ -7,6 +7,7 @@ import { ThumbTexts } from '../../components/ThumbTexts';
 import { Wrapper } from '../../components/Wrapper';
 import { Fieldset } from '../../components/Fieldset';
 import { FormGroup } from '../../components/FormGroup';
+import { Input, Select, Textarea } from '../../components/FormElements';
 import { Button } from '../../components/Button';
 
 import plusIcon from '../../assets/plus-symbol.svg';
@@ -65,7 +66,7 @@ export function GiveClasses() {
         <Form onSubmit={handleSubmit(handleSubmitNewProffy)}>
           <Fieldset legend="Seus dados">
             <FormGroup title="Nome completo" name="name" errorMessage={errors.name?.message}>
-              <input {...register('name')} id="name" />
+              <Input {...register('name')} id="name" />
             </FormGroup>
 
             <FormGroup
@@ -74,7 +75,7 @@ export function GiveClasses() {
               name="avatar"
               errorMessage={errors.avatar?.message}
             >
-              <input {...register('avatar')} id="avatar" />
+              <Input {...register('avatar')} id="avatar" />
             </FormGroup>
 
             <FormGroup
@@ -83,21 +84,21 @@ export function GiveClasses() {
               name="whatsapp"
               errorMessage={errors.whatsapp?.message}
             >
-              <input {...register('whatsapp', {})} id="whatsapp" />
+              <Input {...register('whatsapp', {})} id="whatsapp" />
             </FormGroup>
 
             <FormGroup title="Biografia" name="bio" errorMessage={errors.bio?.message}>
-              <textarea {...register('bio')} id="bio" />
+              <Textarea {...register('bio')} id="bio" />
             </FormGroup>
           </Fieldset>
 
           <Fieldset legend="Sobre a aula">
             <FormGroup title="Matéria" name="schoolSubject" errorMessage={errors.schoolSubject?.message}>
-              <select {...register('schoolSubject')} id="schoolSubject">
+              <Select {...register('schoolSubject')} id="schoolSubject">
                 {schoolSubjects.map(({ schoolSubject, value }) => (
                   <option key={value} value={value}>{schoolSubject}</option>
                 ))}
-              </select>
+              </Select>
             </FormGroup>
 
             <FormGroup
@@ -106,7 +107,7 @@ export function GiveClasses() {
               name="price"
               errorMessage={errors.price?.message}
             >
-              <input type="number" {...register('price', { valueAsNumber: true })} id="price" defaultValue={0} />
+              <Input type="number" {...register('price', { valueAsNumber: true })} id="price" defaultValue={0} />
             </FormGroup>
           </Fieldset>
 
@@ -124,15 +125,15 @@ export function GiveClasses() {
             {fields.map((field, index) => (
               <Row key={field.id}>
                 <FormGroup title="Dia da semana" name="weekday">
-                  <select {...register(`classes.${index}.weekday`)} id="weekday">
+                  <Select {...register(`classes.${index}.weekday`)} id="weekday">
                     {weekdays.map(({ weekday, value }) => (
                       <option key={value} value={value}>{weekday}</option>
                     ))}
-                  </select>
+                  </Select>
                 </FormGroup>
 
                 <FormGroup title="Das" name="hoursFrom">
-                  <input
+                  <Input
                     type="number"
                     {...register(`classes.${index}.hoursFrom`, { valueAsNumber: true })}
                     id="hoursFrom"
@@ -141,7 +142,7 @@ export function GiveClasses() {
                 </FormGroup>
 
                 <FormGroup title="Até" name="hoursTo">
-                  <input
+                  <Input
                     type="number"
                     {...register(`classes.${index}.hoursTo`, { valueAsNumber: true })}
                     id="hoursTo"
