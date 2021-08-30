@@ -14,22 +14,11 @@ export const Filters = styled.section`
     display: flex;
     flex-direction: column;
 
-    @media (min-width: 650px) {
-      flex-direction: row;
-      max-width: 73.6rem;
-      margin: 0 auto;
-    }
-
     > div {
       width: 100%;
 
       + div {
         margin-top: 0.8rem;
-
-        @media (min-width: 650px) {
-          margin-top: 0;
-          margin-left: 1.6rem;
-        }
       }
 
       span {
@@ -52,6 +41,25 @@ export const Filters = styled.section`
 
         &:focus {
           border-color: var(--color-primary);
+        }
+      }
+    }
+  }
+
+  @media (min-width: 650px) {
+    padding-bottom: 0;
+    margin-bottom: 14.4rem;
+
+    > div {
+      flex-direction: row;
+      max-width: 73.6rem;
+      margin: 0 auto;
+      transform:  translateY(3.6rem);
+
+      > div {
+        + div {
+          margin-top: 0;
+          margin-left: 1.6rem;
         }
       }
     }
