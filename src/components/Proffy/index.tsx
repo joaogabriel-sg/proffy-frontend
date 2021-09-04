@@ -1,6 +1,7 @@
 import { Button } from '../Button';
 
 import { currencyFormat } from '../../utils/currencyFormat';
+import { getSchoolSubject } from '../../utils/getSchoolSubject';
 
 import whatsappLogoImg from '../../assets/whatsapp.svg';
 
@@ -30,7 +31,7 @@ export function Proffy({
           <Avatar src={avatar} />
           <div>
             <h3>{name}</h3>
-            <span>{schoolSubject}</span>
+            <span>{getSchoolSubject(schoolSubject)}</span>
           </div>
         </Header>
         <Bio>{bio}</Bio>

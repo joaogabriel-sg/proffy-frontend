@@ -1,3 +1,5 @@
+import { useState, useMemo } from 'react';
+
 import { Header } from '../../components/Header';
 import { Proffy } from '../../components/Proffy';
 import { ThumbTexts } from '../../components/ThumbTexts';
@@ -5,6 +7,7 @@ import { Wrapper } from '../../components/Wrapper';
 import { Select } from '../../components/FormElements';
 
 import { useProffy } from '../../hooks/useProffy';
+import { formatHours } from '../../utils/formatHours';
 
 import { weekdays } from '../../mocks/weekdays';
 import { schoolSubjects } from '../../mocks/schoolSubjects';
@@ -12,7 +15,39 @@ import { schoolSubjects } from '../../mocks/schoolSubjects';
 import { Container, Filters, Proffys } from './styles';
 
 export function Study() {
+  const [subjectFilter, setSubjectFilter] = useState('');
+  const [dayFilter, setDayFilter] = useState('');
+  const [hourFilter, setHourFilter] = useState('');
+
   const { proffys } = useProffy();
+
+  const hours = useMemo(
+    () => Array.from({ length: 24 }).map((_, index) => index, []),
+    [],
+  );
+
+  const filteredProffys = useMemo(() => {
+    if (!subjectFilter && !dayFilter && !hourFilter) return proffys;
+
+    const proffysBySubject = proffys.filter((proffy) =>
+      [proffy.schoolSubject, ''].includes(subjectFilter),
+    );
+
+    const proffysByDay = proffysBySubject.filter((proffy) =>
+      proffy.classes.some((proffyClass) =>
+        [proffyClass.weekday, ''].includes(dayFilter),
+      ),
+    );
+
+    const proffysByHour = proffysByDay.filter((proffy) =>
+      proffy.classes.some((proffyClass) => {
+        if (hourFilter === '') return true;
+        return proffyClass.hoursFrom === +hourFilter;
+      }),
+    );
+
+    return proffysByHour;
+  }, [subjectFilter, dayFilter, hourFilter]);
 
   return (
     <Container>
@@ -24,7 +59,11 @@ export function Study() {
         <div>
           <div>
             <span>Matéria</span>
-            <Select name="weekday" id="weekday">
+            <Select
+              name="school-subject"
+              id="school-subject"
+              onChange={({ target }) => setSubjectFilter(target.value)}
+            >
               <option value="">Selecione</option>
               {schoolSubjects.map(({ schoolSubject, value }) => (
                 <option key={value} value={value}>
@@ -36,7 +75,11 @@ export function Study() {
 
           <div>
             <span>Dia da semana</span>
-            <Select name="weekday" id="weekday">
+            <Select
+              name="weekday"
+              id="weekday"
+              onChange={({ target }) => setDayFilter(target.value)}
+            >
               <option value="">Selecione</option>
               {weekdays.map(({ weekday, value }) => (
                 <option key={value} value={value}>
@@ -48,9 +91,17 @@ export function Study() {
 
           <div>
             <span>Horário</span>
-            <Select name="weekday" id="weekday">
+            <Select
+              name="hour"
+              id="hour"
+              onChange={({ target }) => setHourFilter(target.value)}
+            >
               <option value="">Selecione</option>
-              <option value="8-9">8:00 - 9:00</option>
+              {hours.map((hour) => (
+                <option key={hour} value={hour}>
+                  {formatHours(hour)}
+                </option>
+              ))}
             </Select>
           </div>
         </div>
@@ -58,7 +109,7 @@ export function Study() {
 
       <Wrapper>
         <Proffys>
-          {proffys.map((proffy) => (
+          {filteredProffys.map((proffy) => (
             <Proffy
               key={proffy.id}
               name={proffy.name}

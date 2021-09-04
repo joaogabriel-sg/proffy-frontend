@@ -2,8 +2,6 @@ import { createContext, PropsWithChildren, ReactNode, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { v4 as uuid } from 'uuid';
 
-import { getSchoolSubject } from '../utils/getSchoolSubject';
-
 type Class = {
   weekday: string;
   hoursFrom: number;
@@ -38,7 +36,6 @@ export function ProffyProvider({ children }: PropsWithChildren<ReactNode>) {
     const newProffy: Proffy = {
       id: uuid(),
       ...proffy,
-      schoolSubject: getSchoolSubject(proffy.schoolSubject),
     };
 
     setProffys((prevProffys) => [...prevProffys, newProffy]);
