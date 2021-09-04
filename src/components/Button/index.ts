@@ -4,7 +4,7 @@ import styled, { css } from 'styled-components';
 type ButtonProps = {
   isPrimary?: boolean;
   isSecondary?: boolean;
-}
+};
 
 const buttonCSS = css<ButtonProps>`
   background: var(--color-secondary);
@@ -35,7 +35,7 @@ const buttonCSS = css<ButtonProps>`
     margin-right: 0.8rem;
   }
 
-  @media(min-width: 700px) {
+  @media (min-width: 700px) {
     min-width: 24rem;
     padding: 0 0.6rem;
 
@@ -44,21 +44,25 @@ const buttonCSS = css<ButtonProps>`
     }
   }
 
-  ${({ isPrimary }) => isPrimary && css`
-    background: var(--color-primary-lighter);
+  ${({ isPrimary }) =>
+    isPrimary &&
+    css`
+      background: var(--color-primary-lighter);
 
-    &:hover {
-      background: var(--color-primary-dark);
-    }
-  `}
+      &:hover {
+        background: var(--color-primary-dark);
+      }
+    `}
 
-  ${({ isSecondary }) => isSecondary && css`
-    background: var(--color-secondary);
+  ${({ isSecondary }) =>
+    isSecondary &&
+    css`
+      background: var(--color-secondary);
 
-    &:hover {
-      background: var(--color-secondary-dark);
-    }
-  `}
+      &:hover {
+        background: var(--color-secondary-dark);
+      }
+    `}
 `;
 
 export const Button = styled.button<ButtonProps>`

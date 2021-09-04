@@ -4,13 +4,7 @@ import { currencyFormat } from '../../utils/currencyFormat';
 
 import whatsappLogoImg from '../../assets/whatsapp.svg';
 
-import {
-  Container,
-  Header,
-  Avatar,
-  Bio,
-  Footer,
-} from './styles';
+import { Container, Header, Avatar, Bio, Footer } from './styles';
 
 type ProffyProps = {
   name: string;
@@ -19,10 +13,15 @@ type ProffyProps = {
   bio: string;
   price: number;
   whatsapp: string;
-}
+};
 
 export function Proffy({
-  name, schoolSubject, avatar, bio, price, whatsapp,
+  name,
+  schoolSubject,
+  avatar,
+  bio,
+  price,
+  whatsapp,
 }: ProffyProps) {
   return (
     <Container>

@@ -6,10 +6,14 @@ type FormGroupType = {
   subtitle?: string;
   name: string;
   errorMessage?: string;
-} & PropsWithChildren<ReactNode>
+} & PropsWithChildren<ReactNode>;
 
 export function FormGroup({
-  title, subtitle, name, errorMessage, children,
+  title,
+  subtitle,
+  name,
+  errorMessage,
+  children,
 }: FormGroupType) {
   return (
     <Container>

@@ -31,11 +31,14 @@ import {
   WarningIcon,
 } from './styles';
 
-type NewProffySchemaType = z.infer<typeof newProffySchema>
+type NewProffySchemaType = z.infer<typeof newProffySchema>;
 
 export function GiveClasses() {
   const {
-    register, control, handleSubmit, formState: { errors },
+    register,
+    control,
+    handleSubmit,
+    formState: { errors },
   } = useForm<NewProffySchemaType>({
     resolver: zodResolver(newProffySchema),
     defaultValues: {
@@ -70,7 +73,11 @@ export function GiveClasses() {
       <Wrapper>
         <Form onSubmit={handleSubmit(handleSubmitNewProffy)}>
           <Fieldset legend="Seus dados">
-            <FormGroup title="Nome completo" name="name" errorMessage={errors.name?.message}>
+            <FormGroup
+              title="Nome completo"
+              name="name"
+              errorMessage={errors.name?.message}
+            >
               <Input {...register('name')} id="name" />
             </FormGroup>
 
@@ -92,16 +99,26 @@ export function GiveClasses() {
               <Input {...register('whatsapp', {})} id="whatsapp" />
             </FormGroup>
 
-            <FormGroup title="Biografia" name="bio" errorMessage={errors.bio?.message}>
+            <FormGroup
+              title="Biografia"
+              name="bio"
+              errorMessage={errors.bio?.message}
+            >
               <Textarea {...register('bio')} id="bio" />
             </FormGroup>
           </Fieldset>
 
           <Fieldset legend="Sobre a aula">
-            <FormGroup title="Matéria" name="schoolSubject" errorMessage={errors.schoolSubject?.message}>
+            <FormGroup
+              title="Matéria"
+              name="schoolSubject"
+              errorMessage={errors.schoolSubject?.message}
+            >
               <Select {...register('schoolSubject')} id="schoolSubject">
                 {schoolSubjects.map(({ schoolSubject, value }) => (
-                  <option key={value} value={value}>{schoolSubject}</option>
+                  <option key={value} value={value}>
+                    {schoolSubject}
+                  </option>
                 ))}
               </Select>
             </FormGroup>
@@ -112,12 +129,17 @@ export function GiveClasses() {
               name="price"
               errorMessage={errors.price?.message}
             >
-              <Input type="number" {...register('price', { valueAsNumber: true })} id="price" defaultValue={0} />
+              <Input
+                type="number"
+                {...register('price', { valueAsNumber: true })}
+                id="price"
+                defaultValue={0}
+              />
             </FormGroup>
           </Fieldset>
 
           <Fieldset
-            legend={(
+            legend={
               <>
                 Horários disponíveis
                 <button type="button" onClick={handleCreateNewHour}>
@@ -125,14 +147,19 @@ export function GiveClasses() {
                   Novo horário
                 </button>
               </>
-            )}
+            }
           >
             {fields.map((field, index) => (
               <Row key={field.id}>
                 <FormGroup title="Dia da semana" name="weekday">
-                  <Select {...register(`classes.${index}.weekday`)} id="weekday">
+                  <Select
+                    {...register(`classes.${index}.weekday`)}
+                    id="weekday"
+                  >
                     {weekdays.map(({ weekday, value }) => (
-                      <option key={value} value={value}>{weekday}</option>
+                      <option key={value} value={value}>
+                        {weekday}
+                      </option>
                     ))}
                   </Select>
                 </FormGroup>
@@ -140,7 +167,9 @@ export function GiveClasses() {
                 <FormGroup title="Das" name="hoursFrom">
                   <Input
                     type="number"
-                    {...register(`classes.${index}.hoursFrom`, { valueAsNumber: true })}
+                    {...register(`classes.${index}.hoursFrom`, {
+                      valueAsNumber: true,
+                    })}
                     id="hoursFrom"
                     defaultValue={0}
                   />
@@ -149,7 +178,9 @@ export function GiveClasses() {
                 <FormGroup title="Até" name="hoursTo">
                   <Input
                     type="number"
-                    {...register(`classes.${index}.hoursTo`, { valueAsNumber: true })}
+                    {...register(`classes.${index}.hoursTo`, {
+                      valueAsNumber: true,
+                    })}
                     id="hoursTo"
                     defaultValue={0}
                   />

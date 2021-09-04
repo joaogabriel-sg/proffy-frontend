@@ -11,11 +11,7 @@ import { schoolSubjects } from '../../mocks/schoolSubjects';
 
 import { ProffyContext } from '../../contexts/ProffyContext';
 
-import {
-  Container,
-  Filters,
-  Proffys,
-} from './styles';
+import { Container, Filters, Proffys } from './styles';
 
 export function Study() {
   const { proffys } = useContext(ProffyContext);
@@ -32,7 +28,11 @@ export function Study() {
             <span>Matéria</span>
             <Select name="weekday" id="weekday">
               <option value="">Selecione</option>
-              {schoolSubjects.map(({ schoolSubject, value }) => <option key={value} value={value}>{schoolSubject}</option>)}
+              {schoolSubjects.map(({ schoolSubject, value }) => (
+                <option key={value} value={value}>
+                  {schoolSubject}
+                </option>
+              ))}
             </Select>
           </div>
 
@@ -40,7 +40,11 @@ export function Study() {
             <span>Dia da semana</span>
             <Select name="weekday" id="weekday">
               <option value="">Selecione</option>
-              {weekdays.map(({ weekday, value }) => <option key={value} value={value}>{weekday}</option>)}
+              {weekdays.map(({ weekday, value }) => (
+                <option key={value} value={value}>
+                  {weekday}
+                </option>
+              ))}
             </Select>
           </div>
 

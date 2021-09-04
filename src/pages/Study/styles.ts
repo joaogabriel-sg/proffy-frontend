@@ -36,7 +36,7 @@ export const Filters = styled.section`
       flex-direction: row;
       max-width: 73.6rem;
       margin: 0 auto;
-      transform:  translateY(3.6rem);
+      transform: translateY(3.6rem);
 
       > div {
         + div {

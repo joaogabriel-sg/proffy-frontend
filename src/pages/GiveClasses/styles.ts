@@ -54,7 +54,7 @@ export const Footer = styled.footer`
   display: flex;
   flex-direction: column-reverse;
 
-  @media(min-width: 700px) {
+  @media (min-width: 700px) {
     padding: 4rem 6.4rem;
 
     flex-direction: row;
@@ -100,7 +100,7 @@ export const Button = styled.button`
     background: var(--color-secondary-dark);
   }
 
-  @media(min-width: 700px) {
+  @media (min-width: 700px) {
     min-width: 20rem;
     padding: 0 0.4rem;
   }

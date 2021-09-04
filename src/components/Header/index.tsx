@@ -1,17 +1,11 @@
 import backIcon from '../../assets/back.svg';
 import logoIcon from '../../assets/logo-small.svg';
 
-import {
-  Container,
-  Content,
-  Menu,
-  BackButton,
-  Logo,
-} from './styles';
+import { Container, Content, Menu, BackButton, Logo } from './styles';
 
 type HeaderProps = {
   backTo?: string;
-}
+};
 
 export function Header({ backTo = '/' }: HeaderProps) {
   return (

@@ -24,7 +24,10 @@ export function Home() {
     <Container>
       <Content>
         <Header>
-          <LandingImg src={landingImg} alt="Três pessoas conectadas ao Proffy." />
+          <LandingImg
+            src={landingImg}
+            alt="Três pessoas conectadas ao Proffy."
+          />
           <div>
             <Logo src={logoImg} alt="Proffy" />
             <h2>Sua plaforma de estudos online.</h2>
