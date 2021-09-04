@@ -1,20 +1,18 @@
-import { useContext } from 'react';
-
 import { Header } from '../../components/Header';
 import { Proffy } from '../../components/Proffy';
 import { ThumbTexts } from '../../components/ThumbTexts';
 import { Wrapper } from '../../components/Wrapper';
 import { Select } from '../../components/FormElements';
 
+import { useProffy } from '../../hooks/useProffy';
+
 import { weekdays } from '../../mocks/weekdays';
 import { schoolSubjects } from '../../mocks/schoolSubjects';
-
-import { ProffyContext } from '../../contexts/ProffyContext';
 
 import { Container, Filters, Proffys } from './styles';
 
 export function Study() {
-  const { proffys } = useContext(ProffyContext);
+  const { proffys } = useProffy();
 
   return (
     <Container>

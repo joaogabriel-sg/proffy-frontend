@@ -1,4 +1,3 @@
-import { useContext } from 'react';
 import { useForm, SubmitHandler, useFieldArray } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
@@ -11,6 +10,8 @@ import { FormGroup } from '../../components/FormGroup';
 import { Input, Select, Textarea } from '../../components/FormElements';
 import { Button } from '../../components/Button';
 
+import { useProffy } from '../../hooks/useProffy';
+
 import plusIcon from '../../assets/plus-symbol.svg';
 import warningIcon from '../../assets/warning.svg';
 
@@ -18,8 +19,6 @@ import { schoolSubjects } from '../../mocks/schoolSubjects';
 import { weekdays } from '../../mocks/weekdays';
 
 import { newProffySchema } from '../../schemas/newProffySchema';
-
-import { ProffyContext } from '../../contexts/ProffyContext';
 
 import {
   Container,
@@ -51,7 +50,7 @@ export function GiveClasses() {
     control,
   });
 
-  const { addNewProffy } = useContext(ProffyContext);
+  const { addNewProffy } = useProffy();
 
   const handleSubmitNewProffy: SubmitHandler<NewProffySchemaType> = (data) => {
     addNewProffy(data);

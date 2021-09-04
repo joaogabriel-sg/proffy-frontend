@@ -1,8 +1,6 @@
-import { useContext } from 'react';
-
 import { LinkButton } from '../../components/Button';
 
-import { ProffyContext } from '../../contexts/ProffyContext';
+import { useProffy } from '../../hooks/useProffy';
 
 import logoImg from '../../assets/logo.svg';
 import landingImg from '../../assets/landing.svg';
@@ -24,7 +22,7 @@ import {
 } from './styles';
 
 export function Home() {
-  const { proffys } = useContext(ProffyContext);
+  const { proffys } = useProffy();
 
   return (
     <Container>
