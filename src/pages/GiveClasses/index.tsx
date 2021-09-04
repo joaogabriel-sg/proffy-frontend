@@ -1,3 +1,4 @@
+import { useContext } from 'react';
 import { useForm, SubmitHandler, useFieldArray } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
@@ -17,6 +18,8 @@ import { schoolSubjects } from '../../mocks/schoolSubjects';
 import { weekdays } from '../../mocks/weekdays';
 
 import { newProffySchema } from '../../schemas/newProffySchema';
+
+import { ProffyContext } from '../../contexts/ProffyContext';
 
 import {
   Container,
@@ -45,8 +48,10 @@ export function GiveClasses() {
     control,
   });
 
+  const { addNewProffy } = useContext(ProffyContext);
+
   const handleSubmitNewProffy: SubmitHandler<NewProffySchemaType> = (data) => {
-    console.log(data);
+    addNewProffy(data);
   };
 
   function handleCreateNewHour() {
