@@ -1,4 +1,8 @@
+import { useContext } from 'react';
+
 import { LinkButton } from '../../components/Button';
+
+import { ProffyContext } from '../../contexts/ProffyContext';
 
 import logoImg from '../../assets/logo.svg';
 import landingImg from '../../assets/landing.svg';
@@ -20,6 +24,8 @@ import {
 } from './styles';
 
 export function Home() {
+  const { proffys } = useContext(ProffyContext);
+
   return (
     <Container>
       <Content>
@@ -36,7 +42,7 @@ export function Home() {
 
         <Footer>
           <ButtonsContainer>
-            <LinkButton to="/study" isPrimary>
+            <LinkButton to="/study" $isPrimary>
               <Icon src={studyIcon} alt="Opção de estudar." />
               <span>Estudar</span>
             </LinkButton>
@@ -46,10 +52,15 @@ export function Home() {
             </LinkButton>
           </ButtonsContainer>
 
-          <Description>
-            Total de 295 conexões já realizadas
-            <PurpleHeartIcon src={purpleHeartIcon} alt="Coração roxo" />
-          </Description>
+          {proffys.length > 0 && (
+            <Description>
+              Total de {proffys.length}{' '}
+              {proffys.length === 1
+                ? 'conexão já realizada'
+                : 'conexões já realizadas'}
+              <PurpleHeartIcon src={purpleHeartIcon} alt="Coração roxo" />
+            </Description>
+          )}
         </Footer>
       </Content>
     </Container>

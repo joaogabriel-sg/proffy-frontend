@@ -2,8 +2,8 @@ import { Link } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 
 type ButtonProps = {
-  isPrimary?: boolean;
-  isSecondary?: boolean;
+  $isPrimary?: boolean;
+  $isSecondary?: boolean;
 };
 
 const buttonCSS = css<ButtonProps>`
@@ -44,8 +44,8 @@ const buttonCSS = css<ButtonProps>`
     }
   }
 
-  ${({ isPrimary }) =>
-    isPrimary &&
+  ${({ $isPrimary }) =>
+    $isPrimary &&
     css`
       background: var(--color-primary-lighter);
 
@@ -54,8 +54,8 @@ const buttonCSS = css<ButtonProps>`
       }
     `}
 
-  ${({ isSecondary }) =>
-    isSecondary &&
+  ${({ $isSecondary }) =>
+    $isSecondary &&
     css`
       background: var(--color-secondary);
 
