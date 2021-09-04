@@ -20,7 +20,15 @@
     "@typescript-eslint"
   ],
   "rules": {
-    "react/jsx-filename-extension": [1, { "extensions": [".jsx", ".tsx"] }],
+    "react/jsx-filename-extension": [
+      1,
+      {
+        "extensions": [
+          ".jsx",
+          ".tsx"
+        ]
+      }
+    ],
     "react/react-in-jsx-scope": "off",
     "react/require-default-props": "off",
     "react/jsx-props-no-spreading": "off",
@@ -29,7 +37,13 @@
     "import/prefer-default-export": "off",
     "no-use-before-define": "off",
     "max-len": "off",
-    "@typescript-eslint/no-use-before-define": ["error"]
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-use-before-define": [
+      "error"
+    ],
+    "@typescript-eslint/no-unused-vars": [
+      "error"
+    ]
   },
   "settings": {
     "import/extensions": [
@@ -40,6 +54,6 @@
         "ts": "never",
         "tsx": "never"
       }
-   ]
+    ]
   }
 }
