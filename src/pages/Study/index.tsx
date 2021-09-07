@@ -33,6 +33,8 @@ export function Study() {
       [proffy.schoolSubject, ''].includes(subjectFilter),
     );
 
+    if (!dayFilter && !hourFilter) return proffysBySubject;
+
     const proffysByDay = proffysBySubject.filter((proffy) =>
       proffy.classes.some((proffyClass) =>
         [proffyClass.weekday, ''].includes(dayFilter),
@@ -42,7 +44,10 @@ export function Study() {
     const proffysByHour = proffysByDay.filter((proffy) =>
       proffy.classes.some((proffyClass) => {
         if (hourFilter === '') return true;
-        return proffyClass.hoursFrom === +hourFilter;
+        return (
+          proffyClass.hoursFrom === +hourFilter &&
+          [proffyClass.weekday, ''].includes(dayFilter)
+        );
       }),
     );
 
