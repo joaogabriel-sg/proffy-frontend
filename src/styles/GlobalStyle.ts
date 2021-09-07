@@ -13,6 +13,9 @@ export default createGlobalStyle`
     --color-secondary: #04d361;
     --color-secondary-dark: #04bf58;
 
+    --color-danger: #d31204;
+    --color-danger-dark: #ab1409;
+
     --color-title-in-primary: #ffffff;
 
     --color-text-in-primary: #d4c2ff;
