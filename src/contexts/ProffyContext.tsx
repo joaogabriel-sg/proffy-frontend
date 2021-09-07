@@ -1,6 +1,7 @@
 import { createContext, PropsWithChildren, ReactNode, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { v4 as uuid } from 'uuid';
+import { useLocalStorage } from '../hooks/useLocalStorage';
 
 type Class = {
   weekday: string;
@@ -29,7 +30,8 @@ type ProffyContextProps = {
 export const ProffyContext = createContext({} as ProffyContextProps);
 
 export function ProffyProvider({ children }: PropsWithChildren<ReactNode>) {
-  const [proffys, setProffys] = useState<Proffy[]>([]);
+  const [proffysLS, setProffysLS] = useLocalStorage('@Proffy:proffys', []);
+  const [proffys, setProffys] = useState<Proffy[]>(proffysLS);
   const history = useHistory();
 
   function addNewProffy(proffy: NewProffy) {
@@ -38,7 +40,12 @@ export function ProffyProvider({ children }: PropsWithChildren<ReactNode>) {
       ...proffy,
     };
 
-    setProffys((prevProffys) => [...prevProffys, newProffy]);
+    setProffys((prevProffys) => {
+      const newProffys = [...prevProffys, newProffy];
+
+      setProffysLS(newProffys);
+      return newProffys;
+    });
     history.push('/study');
   }
 
