@@ -57,3 +57,26 @@ export const Proffys = styled.section`
     margin: 0 auto;
   }
 `;
+
+export const Empty = styled.section`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  > h2 {
+    font-size: min(2.4rem, 5vw);
+    color: var(--color-title-in-primary);
+  }
+
+  > img {
+    max-width: 40rem;
+    align-self: center;
+  }
+
+  @media (min-width: 650px) {
+    > h2 {
+      margin-bottom: 1.2rem;
+      color: var(--color-primary);
+    }
+  }
+`;

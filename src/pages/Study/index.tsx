@@ -12,7 +12,9 @@ import { formatHours } from '../../utils/formatHours';
 import { weekdays } from '../../mocks/weekdays';
 import { schoolSubjects } from '../../mocks/schoolSubjects';
 
-import { Container, Filters, Proffys } from './styles';
+import emptyBanner from '../../assets/empty-banner.svg';
+
+import { Container, Filters, Proffys, Empty } from './styles';
 
 export function Study() {
   const [subjectFilter, setSubjectFilter] = useState('');
@@ -114,17 +116,24 @@ export function Study() {
 
       <Wrapper>
         <Proffys>
-          {filteredProffys.map((proffy) => (
-            <Proffy
-              key={proffy.id}
-              name={proffy.name}
-              schoolSubject={proffy.schoolSubject}
-              avatar={proffy.avatar}
-              price={proffy.price}
-              whatsapp={proffy.whatsapp}
-              bio={proffy.bio}
-            />
-          ))}
+          {filteredProffys.length === 0 ? (
+            <Empty>
+              <h2>Nenhum proffy foi cadastrado.</h2>
+              <img src={emptyBanner} alt="Nenhum proffy foi cadastrado." />
+            </Empty>
+          ) : (
+            filteredProffys.map((proffy) => (
+              <Proffy
+                key={proffy.id}
+                name={proffy.name}
+                schoolSubject={proffy.schoolSubject}
+                avatar={proffy.avatar}
+                price={proffy.price}
+                whatsapp={proffy.whatsapp}
+                bio={proffy.bio}
+              />
+            ))
+          )}
         </Proffys>
       </Wrapper>
     </Container>
