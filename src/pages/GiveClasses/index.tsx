@@ -25,6 +25,7 @@ import {
   Form,
   PlusIcon,
   Row,
+  DeleteButton,
   Footer,
   Warning,
   WarningIcon,
@@ -45,7 +46,7 @@ export function GiveClasses() {
     },
   });
 
-  const { fields, append } = useFieldArray({
+  const { fields, append, remove } = useFieldArray({
     name: 'classes',
     control,
   });
@@ -184,6 +185,12 @@ export function GiveClasses() {
                     defaultValue={0}
                   />
                 </FormGroup>
+
+                {fields.length > 1 && (
+                  <DeleteButton type="button" onClick={() => remove(index)}>
+                    Excluir
+                  </DeleteButton>
+                )}
               </Row>
             ))}
           </Fieldset>

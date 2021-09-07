@@ -29,7 +29,7 @@ export const Row = styled.div`
 
   @media (min-width: 700px) {
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-columns: 2fr 1fr 1fr auto;
     gap: 1.6rem;
 
     & + & {
@@ -44,6 +44,47 @@ export const Row = styled.div`
 
 export const PlusIcon = styled.img`
   margin-right: 1.2rem;
+`;
+
+export const DeleteButton = styled.button`
+  background: var(--color-danger);
+  width: 100%;
+  height: min(5.6rem, 10vw);
+
+  padding: 0 1.2rem;
+  border: none;
+  border-radius: 8px;
+  margin-top: 2.4rem;
+
+  align-self: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+
+  font-family: 'Archivo', Arial, Helvetica, sans-serif;
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--color-button-text);
+
+  cursor: pointer;
+  transition: background 0.2s ease-in-out;
+
+  &:hover {
+    background: var(--color-danger-dark);
+  }
+
+  @media (min-width: 700px) {
+    background: transparent;
+    color: var(--color-danger);
+    transition: color 0.2s ease-in-out;
+
+    &:hover {
+      background: transparent;
+      color: var(--color-danger-dark);
+    }
+  }
 `;
 
 export const Footer = styled.footer`
