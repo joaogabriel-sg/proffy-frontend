@@ -1,4 +1,4 @@
-import { Container, Content } from './styles';
+import { Container, Content, Title, Description } from './styles';
 
 type ThumbTextsProps = {
   title: string;
@@ -9,8 +9,8 @@ export function ThumbTexts({ title, description }: ThumbTextsProps) {
   return (
     <Container>
       <Content>
-        <h2>{title}</h2>
-        {description && <p>{description}</p>}
+        <Title>{title}</Title>
+        {description && <Description>{description}</Description>}
       </Content>
     </Container>
   );
