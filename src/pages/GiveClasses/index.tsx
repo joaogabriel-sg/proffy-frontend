@@ -78,7 +78,11 @@ export function GiveClasses() {
               name="name"
               errorMessage={errors.name?.message}
             >
-              <Input {...register('name')} id="name" />
+              <Input
+                {...register('name')}
+                id="name"
+                placeholder="Ex.: João Gabriel Silva Gomes"
+              />
             </FormGroup>
 
             <FormGroup
@@ -87,7 +91,11 @@ export function GiveClasses() {
               name="avatar"
               errorMessage={errors.avatar?.message}
             >
-              <Input {...register('avatar')} id="avatar" />
+              <Input
+                {...register('avatar')}
+                id="avatar"
+                placeholder="Ex.: http://meusite.com/avatar.jpg"
+              />
             </FormGroup>
 
             <FormGroup
@@ -96,7 +104,11 @@ export function GiveClasses() {
               name="whatsapp"
               errorMessage={errors.whatsapp?.message}
             >
-              <Input {...register('whatsapp', {})} id="whatsapp" />
+              <Input
+                {...register('whatsapp', {})}
+                id="whatsapp"
+                placeholder="Ex.: 5511988776655"
+              />
             </FormGroup>
 
             <FormGroup
@@ -104,7 +116,11 @@ export function GiveClasses() {
               name="bio"
               errorMessage={errors.bio?.message}
             >
-              <Textarea {...register('bio')} id="bio" />
+              <Textarea
+                {...register('bio')}
+                id="bio"
+                placeholder="Ex.: Me chamo João Gabriel, mas pode chamar de JG, juntos alcançaremos grandes notas e aprovações nos vestibulares."
+              />
             </FormGroup>
           </Fieldset>
 

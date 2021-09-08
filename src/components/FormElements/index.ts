@@ -15,6 +15,10 @@ const formElementsCSS = css`
   &:focus {
     border-color: var(--color-primary);
   }
+
+  &::placeholder {
+    font-size: 1.4rem;
+  }
 `;
 
 export const Input = styled.input`
