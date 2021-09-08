@@ -1,6 +1,25 @@
 import styled from 'styled-components';
+import { motion, Variants } from 'framer-motion';
 
-export const Container = styled.div`
+const containerVariants: Variants = {
+  hidden: {
+    y: 20,
+    opacity: 0,
+  },
+  visible: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      duration: 1.25,
+      type: 'spring',
+      bounce: 0.6,
+    },
+  },
+};
+
+export const Container = styled(motion.div).attrs(() => ({
+  variants: containerVariants,
+}))`
   & + & {
     margin-top: 2.4rem;
   }

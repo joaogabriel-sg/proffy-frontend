@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { motion, Variants } from 'framer-motion';
 
 export const Container = styled.main`
   background: var(--color-background);
@@ -87,7 +88,22 @@ export const DeleteButton = styled.button`
   }
 `;
 
-export const Footer = styled.footer`
+const footerVariants: Variants = {
+  hidden: {
+    y: 150,
+  },
+  visible: {
+    y: 0,
+    transition: {
+      delay: 1,
+      duration: 1,
+    },
+  },
+};
+
+export const Footer = styled(motion.footer).attrs(() => ({
+  variants: footerVariants,
+}))`
   background: var(--color-box-footer);
   padding: 4.8rem 2.4rem;
   border-top: 1px solid var(--color-line-in-white);
@@ -122,27 +138,3 @@ export const Warning = styled.div`
 `;
 
 export const WarningIcon = styled.img``;
-
-export const Button = styled.button`
-  background: var(--color-secondary);
-  height: 5.6rem;
-  border: none;
-  border-radius: 8px;
-
-  font-family: 'Archivo', Arial, Helvetica, sans-serif;
-  font-size: 1.6rem;
-  font-weight: 600;
-  color: var(--color-button-text);
-
-  cursor: pointer;
-  transition: background 0.2s ease-in-out;
-
-  &:hover {
-    background: var(--color-secondary-dark);
-  }
-
-  @media (min-width: 700px) {
-    min-width: 20rem;
-    padding: 0 0.4rem;
-  }
-`;

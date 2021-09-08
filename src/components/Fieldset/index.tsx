@@ -1,5 +1,6 @@
 import { PropsWithChildren, ReactNode } from 'react';
-import { Container } from './styles';
+
+import { Container, Legend } from './styles';
 
 type FieldsetProps = {
   legend: string | ReactNode;
@@ -8,7 +9,7 @@ type FieldsetProps = {
 export function Fieldset({ legend, children }: FieldsetProps) {
   return (
     <Container>
-      <legend>{legend}</legend>
+      <Legend>{legend}</Legend>
       {children}
     </Container>
   );
