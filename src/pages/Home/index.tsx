@@ -14,6 +14,7 @@ import {
   Header,
   LandingImg,
   Logo,
+  Subtitle,
   Footer,
   ButtonsContainer,
   Icon,
@@ -34,7 +35,7 @@ export function Home() {
           />
           <div>
             <Logo src={logoImg} alt="Proffy" />
-            <h2>Sua plaforma de estudos online.</h2>
+            <Subtitle>Sua plaforma de estudos online.</Subtitle>
           </div>
         </Header>
 

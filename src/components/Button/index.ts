@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import styled, { css } from 'styled-components';
+import { motion, Variants } from 'framer-motion';
 
 type ButtonProps = {
   $isPrimary?: boolean;
@@ -69,6 +70,24 @@ export const Button = styled.button<ButtonProps>`
   ${buttonCSS}
 `;
 
-export const LinkButton = styled(Link)<ButtonProps>`
+const linkButtonVariants: Variants = {
+  hidden: {
+    y: 20,
+    opacity: 0,
+  },
+  visible: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      duration: 1.25,
+      type: 'spring',
+      bounce: 0.75,
+    },
+  },
+};
+
+export const LinkButton = styled(motion(Link)).attrs(() => ({
+  variants: linkButtonVariants,
+}))<ButtonProps>`
   ${buttonCSS}
 `;
