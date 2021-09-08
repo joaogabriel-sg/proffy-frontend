@@ -24,6 +24,9 @@ export function Proffy({
   price,
   whatsapp,
 }: ProffyProps) {
+  const subject = getSchoolSubject(schoolSubject);
+  const message = `Olá professor(a) ${name}, gostaria de saber mais sobre suas aulas de ${subject}.`;
+
   return (
     <Container>
       <div>
@@ -31,7 +34,7 @@ export function Proffy({
           <Avatar src={avatar} />
           <div>
             <h3>{name}</h3>
-            <span>{getSchoolSubject(schoolSubject)}</span>
+            <span>{subject}</span>
           </div>
         </Header>
         <Bio>{bio}</Bio>
@@ -41,7 +44,13 @@ export function Proffy({
           Preço/hora
           <strong>{currencyFormat(price)}</strong>
         </span>
-        <Button type="button">
+        <Button
+          as="a"
+          target="_blank"
+          href={`https://api.whatsapp.com/send?phone=${encodeURIComponent(
+            whatsapp,
+          )}&text=${encodeURIComponent(message)}`}
+        >
           <img src={whatsappLogoImg} alt={whatsapp} />
           Entrar em contato
         </Button>
