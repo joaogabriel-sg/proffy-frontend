@@ -4,6 +4,20 @@
 
 **Proffy** is a web application where teachers can give private lessons and students can connect to these teachers
 
+### [🟢 See live](https://proffy-frontend-joaogabriel-sg.vercel.app/)
+
+<p align="center">
+  <a href="https://proffy-frontend-joaogabriel-sg.vercel.app/" target="_blank">
+    <img width="70%" src="https://imgur.com/H33DiMz.png" />
+  </a>
+  <a href="https://proffy-frontend-joaogabriel-sg.vercel.app/" target="_blank">
+    <img width="70%" src="https://imgur.com/lpQcX9u.png" />
+  </a>
+  <a href="https://proffy-frontend-joaogabriel-sg.vercel.app/" target="_blank">
+    <img width="70%" src="https://imgur.com/Th9aE9B.png" />
+  </a>
+</p>
+
 # 🎮 Getting started
 
 <h3 style="font-size: 18px;">🧬 Clone this repository</h3>
