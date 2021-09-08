@@ -56,6 +56,7 @@ export const Header = styled.header`
 
 export const LandingImg = styled.img`
   width: 100%;
+  height: auto;
   margin-bottom: 8rem;
 
   @media (min-width: 850px) {
@@ -67,6 +68,7 @@ export const LandingImg = styled.img`
 
 export const Logo = styled.img`
   width: max(20rem, 30vw);
+  height: auto;
 
   @media (min-width: 850px) {
     max-width: 32rem;
