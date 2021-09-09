@@ -97,8 +97,14 @@ export const Footer = styled.footer`
   border-top: 1px solid var(--color-line-in-white);
 
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-start;
   justify-content: space-between;
+
+  @media (min-width: 430px) {
+    flex-direction: row;
+    align-items: center;
+  }
 
   @media (min-width: 650px) {
     padding: 3.2rem;

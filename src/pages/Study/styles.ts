@@ -121,6 +121,7 @@ export const Empty = styled.section`
   }
 
   > img {
+    width: 100%;
     max-width: 40rem;
     align-self: center;
   }
