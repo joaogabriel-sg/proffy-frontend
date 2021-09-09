@@ -1,6 +1,25 @@
 import styled from 'styled-components';
+import { motion, Variants } from 'framer-motion';
 
-export const Container = styled.article`
+const containerVariants: Variants = {
+  hidden: {
+    y: 20,
+    opacity: 0,
+  },
+  visible: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      duration: 0.8,
+      type: 'spring',
+      bounce: 0.7,
+    },
+  },
+};
+
+export const Container = styled(motion.article).attrs(() => ({
+  variants: containerVariants,
+}))`
   background: var(--color-box-base);
   border-radius: 8px;
   overflow: hidden;

@@ -14,7 +14,7 @@ import { schoolSubjects } from '../../mocks/schoolSubjects';
 
 import emptyBanner from '../../assets/empty-banner.svg';
 
-import { Container, Filters, Proffys, Empty } from './styles';
+import { Container, Filters, Filter, Proffys, Empty } from './styles';
 
 export function Study() {
   const [subjectFilter, setSubjectFilter] = useState('');
@@ -64,7 +64,7 @@ export function Study() {
 
       <Filters>
         <div>
-          <div>
+          <Filter>
             <span>Matéria</span>
             <Select
               name="school-subject"
@@ -78,9 +78,9 @@ export function Study() {
                 </option>
               ))}
             </Select>
-          </div>
+          </Filter>
 
-          <div>
+          <Filter>
             <span>Dia da semana</span>
             <Select
               name="weekday"
@@ -94,9 +94,9 @@ export function Study() {
                 </option>
               ))}
             </Select>
-          </div>
+          </Filter>
 
-          <div>
+          <Filter>
             <span>Horário</span>
             <Select
               name="hour"
@@ -110,7 +110,7 @@ export function Study() {
                 </option>
               ))}
             </Select>
-          </div>
+          </Filter>
         </div>
       </Filters>
 
