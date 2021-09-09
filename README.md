@@ -68,6 +68,7 @@ Builds the app for production to the `build` folder.
 - Styled Components
 - React Router DOM
 - React Hook Form
+- Framer Motion
 - Zod
 - ESLint
 - Prettier
